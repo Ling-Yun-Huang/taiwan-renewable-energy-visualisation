@@ -1,4 +1,4 @@
-# ⚡ Taiwan Renewable Energy Forecasting and Visaulsing
+# ⚡ Taiwan Renewable Energy Forecasting and Visualising
 
 This project analyses and forecasts Taiwan’s renewable energy development, with particular emphasis on the impact of the **2016 energy policy reforms**. 
 
