@@ -7,9 +7,10 @@ This folder contains the **cleaned datasets** used in the **Visualizing Taiwan's
 | File | Timeframe | Description |
 |------|----------|------------|
 | `powerGeneration.csv` | 2005–2023 | Original dataset from Taiwan’s Open Data Platform |
-| `powerGenerationM.csv` | 2005–2023 | Cleaned **monthly** renewable energy generation data |
-| `powerGenerationY.csv` | 2005–2023 | Aggregated **yearly** renewable energy generation data |
-| `predictions_CI.csv` | 2024–2027 | Forecasted renewable energy generation using regression models |
+| `powerGenerationM.csv`| 2005–2023 | Cleaned **monthly** renewable energy generation data |
+| `powerGenerationY.csv`| 2005–2023 | Aggregated **yearly** renewable energy generation data |
+| `powerGeneration2024.csv`| 2024   | Cleaned **monthly** renewable energy generation data|
+| `predictions_CI.csv`  | 2024–2027 | Forecasted renewable energy generation using regression models |
 
 ---
 
