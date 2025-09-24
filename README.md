@@ -1,6 +1,8 @@
 # ⚡ Taiwan Renewable Energy Forecasting and Visualising
 
-This project analyses and forecasts Taiwan’s renewable energy development, with particular emphasis on the impact of the **2016 energy policy reforms**. 
+🏷️ **Tags:** `R` 📊, `JavaScript` 🌐, `Shiny` 🔥
+
+This project analyses and forecasts Taiwan’s renewable energy development, with particular emphasis on the **2016 energy policy reforms**. 
 
 It combines **interactive visualisations** and **time-series forecasting** to help policymakers and stakeholders quickly understand trends, assess progress toward targets, and compare forecasting models.
 
@@ -10,8 +12,9 @@ It combines **interactive visualisations** and **time-series forecasting** to he
 
 ## 🛠 Tools & Technologies
 
-- **Observable** – Interactive visualisations (JavaScript)  
-- **R** – Time-series forecasting, analysis, and plotting (ggplot2)
+- **Observable** – Interactive visualisations (JavaScript) 🌐  
+- **R** – Time-series forecasting, analysis, and plotting (ggplot2) 📊  
+- **Shiny** – Interactive dashboard for exploration 🔥
 
 ---
 
@@ -24,20 +27,31 @@ It combines **interactive visualisations** and **time-series forecasting** to he
 
 ---
 
-### 🎓 About This Project
+## 🎨 Interactive Dashboard
 
-Part of the **Master’s in Data Science** program (*Data Visualisation* course) at **City, University of London** (2024), where it received a **Distinction**. 
-Later, I extended my work using R to provide **forecasting and additional analysis**.  
+- Built with **Shiny** (R)  
+- Explore annual trends and observe seasonal patterns for selected years and energy sources
 
+> 🌍 **Try the Dashboard:** [Shiny App Link](https://ling-yun-huang.shinyapps.io/interactiondashboard/)  
 
-### 📊 Data
+---
+
+## 🔍 Data
 
 - **Source**: Taiwan’s [Open Data Platform](http://data.gov.tw/en)  
 - **Coverage**: 2005–2024 (monthly)  
 - **Features**: Power generation by energy source  
 - **Processing**: Cleaned and prepared with Python; forecasting done in R  
 
+---
 
-### 📜 License
+## 🎓 About This Project
+
+Part of the **Master’s in Data Science** program (*Data Visualisation* course) at **City, University of London** (2024), where it received a **Distinction**.  
+Extended using R to provide **advanced forecasting and additional analysis**.  
+
+---
+
+## 📜 License
 
 This project is licensed under the **[MIT License](LICENSE)**.
