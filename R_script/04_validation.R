@@ -1,9 +1,13 @@
+# ----------------------------------
+# Models Validation & Comparison
+# ----------------------------------
+
 library(dplyr)
 library(ggplot2)
 library(Metrics)
 library(forecast)
 
-# Read datasets and results
+# Read data and results
 energy05_23_long <- readRDS("Documents/GitHub/taiwan-renewable-energy-visualisation/R_script/output/energy05_23_long.rds")
 energy24_long <- readRDS("Documents/GitHub/taiwan-renewable-energy-visualisation/R_script/output/energy24_long.rds")
 
@@ -22,22 +26,12 @@ color_mapping <- c(
   "Prophet"     = "lightsalmon"     
 )
 
-# -------------------------
 # for each source
-# -------------------------
 for(e in energy_list){
-  
-  # actual values in 2024
-  actual <- energy24_long %>% filter(item == e) %>% pull(value)
-  
-  # ETS
-  pred_ets <- as.numeric(forecast_ETS[[e]]$mean)
-  
-  # ARIMA
-  pred_arima <- as.numeric(forecast_ARIMA[[e]]$mean)
-  
-  # Prophet
-  pred_prophet <- tail(forecast_Prophet[[e]]$yhat, 12)
+  actual <- energy24_long %>% filter(item == e) %>% pull(value) # 2024 data
+  pred_ets <- as.numeric(forecast_ETS[[e]]$mean) # ETS
+  pred_arima <- as.numeric(forecast_ARIMA[[e]]$mean) # ARIMA
+  pred_prophet <- tail(forecast_Prophet[[e]]$yhat, 12) # Prophet
   
   # accuracy calculation
   accuracy_table <- rbind(

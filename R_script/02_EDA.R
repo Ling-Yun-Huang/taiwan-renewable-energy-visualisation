@@ -1,12 +1,16 @@
+# -----------------------------
+# Exploratory Data Analysis
+# -----------------------------
+
 # Read data
-energy05_23_long <- readRDS("Documents/GitHub/taiwan-renewable-energy-visualisation/R_script/output/energy05_23_long.rds")
+energy_long <- readRDS("Documents/GitHub/taiwan-renewable-energy-visualisation/R_script/output/energy_long.rds")
 
 # annual data
-energy_annual05_23 <- energy05_23_long %>%
+energy_annual <- energy_long %>%
   group_by(year, item) %>%
   summarise(AnnualValue = sum(value), .groups = "drop")
 
-energy_monthly_first <- energy05_23_long %>%
+energy_monthly_first <- energy_long %>%
   group_by(year, month) %>%
   slice(1) %>%        # keep first one
   ungroup()
@@ -64,7 +68,7 @@ ggplot(energy_annual, aes(x = year, y = Renewable_pct)) +
 
 ## Take a closer look in solar and wind after 2016
 # Solar
-solar_data <- energy05_23_long %>% 
+solar_data <- energy_long %>% 
   filter(item == 'Solar') %>%
   filter(year(date) >= 2016) %>%
   arrange(date)
@@ -80,7 +84,7 @@ ggplot(solar_data, aes(x = date, y = value)) +
   theme_minimal(base_size = 12)
 
 # Wind
-wind_data <- energy05_23_long %>% 
+wind_data <- energy_long %>% 
   filter(item == 'Wind') %>%
   filter(year(date) >= 2016) %>%
   arrange(date)
@@ -115,13 +119,13 @@ ggplot(solar_seasonal_data, aes(x = month, y = mean_value)) +
               fill = "yellow", alpha = 0.3) +
   scale_x_continuous(breaks = 1:12, labels = month.abb) +
   labs(
-    title = paste("Solar Seasonal Pattern"),
+    title = paste("Solar Seasonal Pattern(2016-2024)"),
     x = "Month",
     y = "Average Generation (GWh)"
   ) +
   theme_minimal(base_size = 12)
 
-# Only show after 2020
+# closer look at 2020-2024
 solar_seasonal_data20 <- solar_data %>%
   filter(year(date) >= 2020) %>%
   mutate(month = month(date)) %>%
@@ -139,7 +143,7 @@ ggplot(solar_seasonal_data20, aes(x = month, y = mean_value)) +
               fill = "yellow", alpha = 0.3) +
   scale_x_continuous(breaks = 1:12, labels = month.abb) +
   labs(
-    title = paste("Solar Seasonal Pattern"),
+    title = paste("Solar Seasonal Patternc(2020-2024)"),
     x = "Month",
     y = "Average Generation (GWh)"
   ) +
@@ -162,8 +166,35 @@ ggplot(wind_seasonal_data, aes(x = month, y = mean_value)) +
               fill = "skyblue", alpha = 0.3) +
   scale_x_continuous(breaks = 1:12, labels = month.abb) +
   labs(
-    title = paste("Wind Seasonal Pattern"),
+    title = paste("Wind Seasonal Pattern (2016-2024)"),
     x = "Month",
     y = "Average Generation (GWh)"
   ) +
   theme_minimal(base_size = 12)
+
+# All source with seasonal pattern after 2016
+seasonal_data <- energy_long %>%
+  mutate(month = month(date)) %>%
+  filter(year(date) >= 2016) %>%
+  group_by(item, month) %>%
+  summarise(
+    mean_value = mean(value, na.rm = TRUE),
+    sd_value   = sd(value, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+ggplot(seasonal_data, aes(x = month, y = mean_value, color = item, fill = item)) +
+  geom_ribbon(aes(ymin = mean_value - sd_value, ymax = mean_value + sd_value),
+              alpha = 0.2, color = NA) +
+  geom_line(size = 1.2) +
+  geom_point(size = 2) +
+  scale_x_continuous(breaks = 1:12, labels = month.abb) +
+  scale_color_manual(values = color_panel) +
+  scale_fill_manual(values = color_panel) +
+  labs(title = "Seasonal Pattern by Energy Source (2016-2024)",
+       x = "Month",
+       y = "Average Generation (GWh)",
+       color = "Energy Source",
+       fill = "Energy Source") +
+  theme_minimal(base_size = 12)
+

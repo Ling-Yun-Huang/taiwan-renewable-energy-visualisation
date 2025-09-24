@@ -68,8 +68,12 @@ energy24_long <- energy24 %>%
 
 head(energy24_long)
 
+# Combine two data
+energy_long <- rbind(energy05_23_long, energy24_long)
+
 # Save RDS
 saveRDS(energy05_23, "Documents/GitHub/taiwan-renewable-energy-visualisation/R_script/output/energy05_23.rds")
 saveRDS(energy05_23_long, "Documents/GitHub/taiwan-renewable-energy-visualisation/R_script/output/energy05_23_long.rds")
 saveRDS(energy24, "Documents/GitHub/taiwan-renewable-energy-visualisation/R_script/output/energy24.rds")
 saveRDS(energy24_long, "Documents/GitHub/taiwan-renewable-energy-visualisation/R_script/output/energy24_long.rds")
+saveRDS(energy_long, "Documents/GitHub/taiwan-renewable-energy-visualisation/R_script/output/energy_long.rds")

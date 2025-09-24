@@ -1,14 +1,13 @@
-# -------------------------
+# -----------------------------
+# Summary (history + forecast)
+# -----------------------------
 # Data
-# -------------------------
-energy05_23_long <- readRDS("Documents/GitHub/taiwan-renewable-energy-visualisation/R_script/output/energy05_23_long.rds")
-energy24_long <- readRDS("Documents/GitHub/taiwan-renewable-energy-visualisation/R_script/output/energy24_long.rds")
-energy05_24_long <- rbind(energy05_23_long, energy24_long)
+energy_long <- readRDS("Documents/GitHub/taiwan-renewable-energy-visualisation/R_script/output/energy_long.rds")
 forecast_total <- readRDS("Documents/GitHub/taiwan-renewable-energy-visualisation/R_script/output/forecast_total.rds")
 
-## Plot the historical + 2025 Forecast
+## Plot
 # Calculate the historical renewable % in each month
-historical_pct <- energy05_24_long %>%
+historical_pct <- energy_long %>%
   group_by(date) %>%
   summarise(
     Renewable = sum(value[item %in% energy_list]),
@@ -39,13 +38,13 @@ ggplot() +
   geom_hline(yintercept = 0.2, linetype = "dashed", color = "red") +  # 20% goal line
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
   scale_color_manual(values = c("Historical" = "slateblue", "Forecast" = "mediumseagreen")) +
-  labs(title = "Renewable Energy %: Historical + 2025 Forecast (ARIMA)",
+  labs(title = "Renewable %: Historical + 2025 Forecast (ARIMA)",
        x = "Date", y = "Renewable Energy / Total Energy", color = "Series") +
   theme_minimal(base_size = 12) +
   theme(plot.title = element_text(face = "bold", hjust = 0.5))
 
 
-# Combine the dataset
+# Plotting after 2016
 plot_data <- bind_rows(
   historical_pct %>% select(date, Renewable_pct, series),
   forecast_pct %>% select(date, Renewable_pct, series)
@@ -64,7 +63,7 @@ ggplot() +
   geom_hline(yintercept = 0.2, linetype = "dashed", color = "red") +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
   scale_color_manual(values = c("Historical" = "slateblue", "Forecast" = "mediumseagreen")) +
-  labs(title = "Renewable Energy %: Historical + 2025 Forecast (ARIMA)",
+  labs(title = "Renewable %: 2016-2024 + 2025 Forecast (ARIMA)",
        x = "Date", y = "Renewable Energy / Total Energy", color = "Series") +
   theme_minimal(base_size = 12) +
   theme(plot.title = element_text(face = "bold", hjust = 0.5))

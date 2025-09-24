@@ -7,7 +7,7 @@ library(plotly)
 # -------------------------
 # Data preparation
 # -------------------------
-energy_long <- readRDS("Documents/GitHub/taiwan-renewable-energy-visualisation/R_script/output/energy_long.rds")
+energy_long <- readRDS("energy_long.rds")
 
 # annual data
 energy_annual <- energy_long %>%
