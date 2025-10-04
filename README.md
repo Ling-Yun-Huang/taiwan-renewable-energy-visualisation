@@ -1,6 +1,6 @@
 # ⚡ Taiwan Renewable Energy Forecasting and Visualising
 
-🏷️ **Tags:** `R` 📊, `JavaScript` 🌐, `Shiny` 🔥
+🏷️ **Tags:** `R` 📊, `JavaScript` 🌐, `Shiny` ✨
 
 This project analyses and forecasts Taiwan’s renewable energy development, with particular emphasis on the **2016 energy policy reforms**. 
 
@@ -14,7 +14,7 @@ It combines **interactive visualisations** and **time-series forecasting** to he
 
 - **Observable** – Interactive visualisations (JavaScript) 🌐  
 - **R** – Time-series forecasting, analysis, and plotting (ggplot2) 📊  
-- **Shiny** – Interactive dashboard for exploration 🔥
+- **Shiny** – Interactive dashboard for exploration ✨
 
 ---
 
@@ -32,12 +32,15 @@ It combines **interactive visualisations** and **time-series forecasting** to he
 
 For detailed analysis and results:
 
-- [🔹 R results overview](R_results/README.md) - Summary tables and plots generated in R
-- [📊 Data Exploration (EDA)](R_results/EDA.md) – Annual/seasonal patterns, key energy source trends  
-- [📈 Model Comparison](R_results/Model.md) – ARIMA, ETS, Prophet and evaluation  
-- [🔮 Forecasting Results](R_results/Forecast.md) – 2025 & 2030 projections vs policy targets  
-- [🌍 Shiny Dashboard](R_results/Dashboard.md) – Interactive exploration
-- [🔗 Observable Report](https://observablehq.com/d/13d921555879b756) - Interactive visualisation in JavaScript
+| Section                   | Description                                        | Tool       | Link                                                   |
+| ------------------------- | -------------------------------------------------- | ---------- | ------------------------------------------------------ |
+| 🔹 R results overview     | Summary tables and plots generated in R            | 🇷 `R`      | 📎 [Link](R_results/README.md)                         |
+| 📊 Data Exploration (EDA) | Annual/seasonal patterns, key energy source trends | 🇷 `R`      | 📎 [Link](R_results/EDA.md)                            |
+| 📈 Model Comparison       | ARIMA, ETS, Prophet and evaluation                 | 🇷 `R`      | 📎 [Link](R_results/Model.md)                          |
+| 🔮 Forecasting Results    | 2025 & 2030 projections vs policy targets          | 🇷 `R`      | 📎 [Link](R_results/Forecast.md)                       |
+| 🌍 Shiny Dashboard        | Interactive exploration                            | ✨ `Shiny`  | 📎 [Link](R_results/Dashboard.md)                      |
+| 🔗 Observable Report      | Interactive visualisation in JavaScript            | 🌐 `JS`     | 📎 [Link](https://observablehq.com/d/13d921555879b756) |
+
 
 ---
 
