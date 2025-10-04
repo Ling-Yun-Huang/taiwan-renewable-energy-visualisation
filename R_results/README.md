@@ -19,18 +19,36 @@ These results summarise Taiwan’s renewable energy trends and forecasts based o
 
 ### 🔹 Time-Series Models Comparison
 
+> Full details of models' comparison are available in [📈 Model.md](Model.md)
+
+Three forecasting models — *ETS, ARIMA, and Prophet* — were evaluated using data from 2005 to 2023.
+Their performance was validated against 2024 data to identify the best model for future forecasts.
+
+<img src="figures/Validate24.png" width="600">
+
+| Model   | RMSE    | MAPE  | Result                |
+| ------- | ------- | ----- | --------------------- |
+| ETS     | 486.56  | 0.15  |                       |
+| ARIMA   | 317.58  | 0.09  | *the best model*      |
+| Prophet | 541.55  | 0.15  |                       |
 
 ---
 
 ### 🔹 Forecasts for 2025
 
-| Energy Source | Forecast 2025 (GWh) | Contribution to Total (%) |
-|---------------|-------------------|---------------------------|
-| Solar         | 14,200            | 45%                       |
-| Wind          | 9,100             | 29%                       |
-| Others        | 5,500             | 17%                       |
+> Full details of 2025 Forecasting are available in [🔮 Forecast.md](Forecast.md)
 
-> Forecasts generated using **ARIMA** (the best model choose above) in R.  
+Forecasts were generated using ARIMA, the best-performing model from the previous evaluation.
+
+<img src="figures/Forecast25.png" width="600"> 
+
+| Energy Source   | Forecast 2025 (GWh) | Contribution to Total (%) |
+| --------------- |-------------------: | ------------------------: |
+| Solar           | 17,534              | 5.97%                     |
+| Wind            | 19,773              | 6.73%                     |
+| Others          |  8,334              | 2.84%                     |
+| Renewable Total | 45,640              | 15.53%                    |
+
 > Based on trends, Taiwan is unlikely to reach the **20% renewable energy target by 2025**, but 2027 may be realistic.
 
 ---
