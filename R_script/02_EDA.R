@@ -2,6 +2,10 @@
 # Exploratory Data Analysis
 # -----------------------------
 
+library(dplyr) 
+library(tidyr)
+library(ggplot2)
+
 # Read data
 energy_long <- readRDS("Documents/GitHub/taiwan-renewable-energy-visualisation/R_script/output/energy_long.rds")
 
@@ -16,7 +20,7 @@ energy_monthly_first <- energy_long %>%
   ungroup()
 
 # Yearly renewable percentage
-energy_annual <- energy_monthly_first %>%
+energy_annual_re <- energy_monthly_first %>%
   group_by(year) %>%
   summarise(
     Overall = sum(Overall),          
@@ -26,6 +30,16 @@ energy_annual <- energy_monthly_first %>%
   mutate(
     Renewable_pct = RenewableTotal / Overall
   )
+
+# Calculate each source total power in 2005, 2016, 2023
+
+summary_table <- energy_annual %>% 
+  filter(year %in% c(2005, 2016, 2023)) %>% 
+  pivot_wider(names_from = year, values_from = AnnualValue, names_prefix = "Y") %>% 
+  mutate( Growth = scales::percent((Y2023 - Y2016) / Y2016, accuracy = 1) ) %>% 
+  select(item, Y2005, Y2016, Y2023, Growth)
+
+print(summary_table)
 
 # see individual types trend
 
@@ -38,7 +52,7 @@ color_panel <- c(
   "Waste"      = "#A7A7A7"  
 )
 
-ggplot(energy_annual05_23, aes(x = year, y = AnnualValue, color = item)) +
+ggplot(energy_annual, aes(x = year, y = AnnualValue, color = item)) +
   geom_smooth(se = FALSE, method = "loess") + 
   labs(title = "Annual Renewable Energy by Source (smooth)",
        x = "Year", y = "GWh", color = "Energy Source") +
@@ -46,12 +60,12 @@ ggplot(energy_annual05_23, aes(x = year, y = AnnualValue, color = item)) +
   theme_minimal(base_size = 13)
 
 # see yearly percentage in Renewable Energy
-ggplot(energy_annual, aes(x = year, y = Renewable_pct)) +
+ggplot(energy_annual_re, aes(x = year, y = Renewable_pct)) +
   geom_line(color = "steelblue", size = 1.2) +
   geom_point(color = "steelblue", size = 2) +
-  geom_point(data = energy_annual %>% filter(year == 2016), 
+  geom_point(data = energy_annual_re %>% filter(year == 2016), 
              aes(x = year, y = Renewable_pct), color = "orange", size = 3) +
-  geom_text(data = energy_annual %>% filter(year == 2016),
+  geom_text(data = energy_annual_re %>% filter(year == 2016),
             aes(x = year, y = Renewable_pct, 
                 label = paste0(round(Renewable_pct*100,1),"%")),
                 vjust = -1, color = "orange", size = 3.5) +
