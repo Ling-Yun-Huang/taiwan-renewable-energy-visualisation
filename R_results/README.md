@@ -7,6 +7,7 @@ These results summarise Taiwan’s renewable energy trends and forecasts based o
 
 ### 🔹 Annual Renewable Energy Generation (2005–2023)
 
+> Full details (all sources + seasonal patterns) are available in [EDA.md](EDA.md).
 <img src="figures/annual_all_source.png" width="600">
 
 | Energy Source | 2005 (GWh) | 2016 (GWh) | 2023 (GWh) | Growth (2016→2023) |
@@ -15,7 +16,7 @@ These results summarise Taiwan’s renewable energy trends and forecasts based o
 | Wind          | 91         | 1,457      | 6,201      | +326%             |
 
 > This table highlights the two fastest-growing renewable sources.  
-> Full details (all sources + seasonal patterns) are available in [EDA.md](EDA.md).
+
 ---
 
 ### 🔹 Time-Series Models Comparison
