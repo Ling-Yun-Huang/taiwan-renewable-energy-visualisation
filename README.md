@@ -25,14 +25,32 @@ It combines **interactive visualisations** and **time-series forecasting** to he
 - **Wind energy** shows gradual improvement, with **winter peaks**.  
 - **Forecasting models** suggest that **reaching 20% by 2025 is unlikely**, but **2027 may be more realistic**.  
 
+
+---
+
+## 📚 Project Structure
+
+For detailed analysis and results:
+
+- [🔹 R results overview](R_result/README.md) - Summary tables and plots generated in R
+- [📊 Data Exploration (EDA)](R_result/EDA.md) – Annual/seasonal patterns, key energy source trends  
+- [📈 Model Comparison](R_result/Model.md) – ARIMA, ETS, Prophet and evaluation  
+- [🔮 Forecasting Results](R_result/Forecast.md) – 2025 & 2030 projections vs policy targets  
+- [🌍 Shiny Dashboard](R_result/Dashboard.md) – Interactive exploration
+- [🔗 Observable Report](https://observablehq.com/d/13d921555879b756) - Interactive visualisation in JavaScript
+
 ---
 
 ## 🎨 Interactive Dashboard
 
-- Built with **Shiny** (R)  
-- Explore annual trends and observe seasonal patterns for selected years and energy sources
+- Built with **Shiny** (R)
+- Select year range and energy sources to explore trends and seasonal patterns
 
-> 🌍 **Try the Dashboard:** [Shiny App Link](https://ling-yun-huang.shinyapps.io/interactiondashboard/)  
+> 🌍 **Try the Dashboard:** [Shiny App Link](https://ling-yun-huang.shinyapps.io/interactiondashboard/)
+
+Detailed instructions: Learn how to interact with filters, view seasonal patterns, and interpret plots
+
+> 📖 Dashboard Guide: [Shiny Dashboard](R_result/Dashboard.md)
 
 ---
 
