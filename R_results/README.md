@@ -1,43 +1,51 @@
-# ⚡ Taiwan Renewable Energy Forecasting and Visualising
+## 📊 Key R Results
 
-This project analyses and forecasts Taiwan’s renewable energy development, with particular emphasis on the impact of the **2016 energy policy reforms**. 
-
-It combines **interactive visualisations** and **time-series forecasting** to help policymakers and stakeholders quickly understand trends, assess progress toward targets, and compare forecasting models.
-
-> *“Explore Taiwan’s renewable energy journey from 2005 to 2025, and see how close we are to the 20% renewable energy goal.”*
+These results summarise Taiwan’s renewable energy trends and forecasts based on R analysis and modelling.
 
 ---
 
-## 🛠 Tools & Technologies
+### 🔹 Annual Renewable Energy Generation (2005–2023)
 
-- **Observable** – Interactive visualisations (JavaScript)  
-- **R** – Time-series forecasting, analysis, and plotting (ggplot2)
+| Energy Source | 2005 (GWh) | 2016 (GWh) | 2023 (GWh) | Growth (2016→2023) |
+|---------------|------------|------------|------------|------------------|
+| Solar         | 0.96       | 1,109      | 12,909     | +1064%           |
+| Wind          | 91.3       | 1,457      | 6,201      | +326%            |
+| Hydropower    | 4,071      | 6,562      | 3,963      | -40%             |
+| Geothermal    | 0          | 0          | 23.2       | ---              |
+| Biomass       | 323        | 205        | 231        | +13%             |
+| Waste         | 3054       | 3397       | 3382       | +0%              |
+
+> Generated with R using `dplyr` summarisation.
+
+![Annual_trend_all_plot](figure/annual_all_source.png)
 
 ---
 
-## 📈 Insights & Findings
+### 🔹 Seasonal Pattern Example (Solar 2016–2023)
 
-- Renewable energy generation has **steadily increased**, with a **notable acceleration after 2016**.  
-- **Solar energy** drives most of the growth, with **clear seasonal patterns** (higher in summer, lower in winter).  
-- **Wind energy** shows gradual improvement, with **winter peaks**.  
-- **Forecasting models** suggest that **reaching 20% by 2025 is unlikely**, but **2027 may be more realistic**.  
+![Solar Seasonal Pattern](output/solar_seasonal.png)
+
+> The plot shows monthly averages with standard deviation ribbons. Clear seasonal patterns appear, with higher generation in summer months.
 
 ---
 
-### 🎓 About This Project
+### 🔹 Forecasts for 2025
 
-Part of the **Master’s in Data Science** program (*Data Visualisation* course) at **City, University of London** (2024), where it received a **Distinction**. 
-Later, I extended my work using R to provide **forecasting and additional analysis**.  
+| Energy Source | Forecast 2025 (GWh) | Contribution to Total (%) |
+|---------------|-------------------|---------------------------|
+| Solar         | 14,200            | 45%                       |
+| Wind          | 9,100             | 29%                       |
+| Hydro         | 5,500             | 17%                       |
+| Other Renewables | 2,000          | 9%                        |
+| **Total**     | 30,800            | 100%                      |
 
+> Forecasts generated using **ETS, ARIMA, and Prophet** models in R.  
+> Based on trends, Taiwan is unlikely to reach the **20% renewable energy target by 2025**, but 2027 may be realistic.
 
-### 📊 Data
+---
 
-- **Source**: Taiwan’s [Open Data Platform](http://data.gov.tw/en)  
-- **Coverage**: 2005–2024 (monthly)  
-- **Features**: Power generation by energy source  
-- **Processing**: Cleaned and prepared with Python; forecasting done in R  
+### 🔹 Explore Interactive Results
 
+For interactive charts and seasonal exploration:
 
-### 📜 License
-
-This project is licensed under the **[MIT License](LICENSE)**.
+> 🌍 [Open Shiny Dashboard](https://ling-yun-huang.shinyapps.io/interactiondashboard/)
