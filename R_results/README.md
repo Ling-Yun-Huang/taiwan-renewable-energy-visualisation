@@ -60,8 +60,6 @@ Forecasts were generated using ARIMA, the best-performing model from the previou
 For interactive charts and seasonal exploration:
 
 > 🌍 **Open the Shiny Dashboard:** [Click here](https://ling-yun-huang.shinyapps.io/interactiondashboard/)  
-> 🌍 **Open the Shiny Dashboard:** <a href="https://ling-yun-huang.shinyapps.io/interactiondashboard/" target="_blank">Click here</a>
-
 
 > 💡 **How to use the Dashboard:**  
 > 1. Select the year range with the slider.  
