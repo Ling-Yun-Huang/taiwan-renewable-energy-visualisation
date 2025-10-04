@@ -6,28 +6,30 @@ This document presents the **Exploratory Data Analysis (EDA)** of Taiwan's renew
 We examine **annual trends**, **seasonal patterns**, and highlight the most significant contributors.
 
 ---
+### 🔹 Annual Renewable Energy Percentage
 
-### 🔹 Annual Trends by Energy Source
+<img src="figures/annual_re_pct.png" width="600">
 
-We aggregated the monthly generation data into annual totals for each energy source.
+
+#### 🔹 Annual Trends by Energy Source
 
 <img src="figures/annual_all_source.png" width="600">
 
-The table below shows the total annual generation by energy source for 2005, 2016, and 2023,  
-as well as the growth rate from 2016 to 2023.  
+The table below shows the total annual generation by energy source for 2005, 2016, and 2024,  
+as well as the growth rate from 2016 to 2024.  
 
-| Energy Source | 2005 (GWh) | 2016 (GWh) | 2023 (GWh) | Growth (2016→2023) |
+| Energy Source | 2005 (GWh) | 2016 (GWh) | 2024 (GWh) | Growth (2016→2024) |
 |---------------|-----------:|-----------:|-----------:|------------------: |
-| Solar         | 1          | 1,109      | 12,909     | +1064%             |
-| Wind          | 91         | 1,457      | 6,201      | +326%              |
-| Hydropower    | 4,071      | 6,562      | 3,963      | -40%               |
-| Geothermal    | 0          | 0          | 23         | ---                |
-| Biomass       | 323        | 205        | 231        | +13%               |
-| Waste         | 3,054      | 3,397      | 3,382      | +0%                |
+| Solar         | 1          | 1,109      | 15,296     | +1279%             |
+| Wind          | 91         | 1,457      | 10,510     | +621%              |
+| Hydropower    | 4,071      | 6,562      | 4,208      | -36%               |
+| Geothermal    | 0          | 0          | 27         | ---                |
+| Biomass       | 323        | 205        | 238        | +16%               |
+| Waste         | 3,054      | 3,397      | 3,638      | +7%                |
 
 > **Insights:**  
 > - Solar and Wind are the fastest-growing sources in Taiwan.  
-> - Hydropower decreased in 2023 compared to 2016, likely due to water availability or operational adjustments.  
+> - Hydropower decreased in 2024 compared to 2016, likely due to water availability or operational adjustments.  
 > - Geothermal has only started contributing recently.  
 > - Biomass and Waste remain relatively stable.  
 
