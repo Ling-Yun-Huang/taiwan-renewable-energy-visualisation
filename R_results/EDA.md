@@ -6,12 +6,14 @@ This document presents the **Exploratory Data Analysis (EDA)** of Taiwan's renew
 We examine **annual trends**, **seasonal patterns**, and highlight the most significant contributors.
 
 ---
+
 ### 🔹 Annual Renewable Energy Percentage
 
 <img src="figures/annual_re_pct.png" width="600">
 
+> **Insight:** The renewable energy share has steadily increased, more than doubling since 2016, reflecting Taiwan’s policy-driven.
 
-#### 🔹 Annual Trends by Energy Source
+### 🔹 Annual Trends by Energy Source
 
 <img src="figures/annual_all_source.png" width="600">
 
@@ -33,8 +35,6 @@ as well as the growth rate from 2016 to 2024.
 > - Geothermal has only started contributing recently.  
 > - Biomass and Waste remain relatively stable.  
 
----
-
 ### 🔹 Seasonal Patterns
 
 Seasonal variation differs by energy source:
@@ -47,8 +47,6 @@ Seasonal variation differs by energy source:
 <img src="figures/seasonal_pattern_solar_wind.png" width="600">
 
 > The plot highlights the average monthly generation (GWh) for Solar and Wind, with shaded areas representing standard deviation across years.  
-
----
 
 ### 🔹 Explore Interactive Results
 
