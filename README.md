@@ -32,11 +32,11 @@ It combines **interactive visualisations** and **time-series forecasting** to he
 
 For detailed analysis and results:
 
-- [🔹 R results overview](R_result/README.md) - Summary tables and plots generated in R
-- [📊 Data Exploration (EDA)](R_result/EDA.md) – Annual/seasonal patterns, key energy source trends  
-- [📈 Model Comparison](R_result/Model.md) – ARIMA, ETS, Prophet and evaluation  
-- [🔮 Forecasting Results](R_result/Forecast.md) – 2025 & 2030 projections vs policy targets  
-- [🌍 Shiny Dashboard](R_result/Dashboard.md) – Interactive exploration
+- [🔹 R results overview](R_results/README.md) - Summary tables and plots generated in R
+- [📊 Data Exploration (EDA)](R_results/EDA.md) – Annual/seasonal patterns, key energy source trends  
+- [📈 Model Comparison](R_results/Model.md) – ARIMA, ETS, Prophet and evaluation  
+- [🔮 Forecasting Results](R_results/Forecast.md) – 2025 & 2030 projections vs policy targets  
+- [🌍 Shiny Dashboard](R_results/Dashboard.md) – Interactive exploration
 - [🔗 Observable Report](https://observablehq.com/d/13d921555879b756) - Interactive visualisation in JavaScript
 
 ---
