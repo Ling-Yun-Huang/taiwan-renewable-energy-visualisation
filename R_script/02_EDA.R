@@ -34,10 +34,10 @@ energy_annual_re <- energy_monthly_first %>%
 # Calculate each source total power in 2005, 2016, 2023
 
 summary_table <- energy_annual %>% 
-  filter(year %in% c(2005, 2016, 2023)) %>% 
+  filter(year %in% c(2005, 2016, 2024)) %>% 
   pivot_wider(names_from = year, values_from = AnnualValue, names_prefix = "Y") %>% 
-  mutate( Growth = scales::percent((Y2023 - Y2016) / Y2016, accuracy = 1) ) %>% 
-  select(item, Y2005, Y2016, Y2023, Growth)
+  mutate( Growth = scales::percent((Y2024 - Y2016) / Y2016, accuracy = 1) ) %>% 
+  select(item, Y2005, Y2016, Y2024, Growth)
 
 print(summary_table)
 
@@ -63,13 +63,29 @@ ggplot(energy_annual, aes(x = year, y = AnnualValue, color = item)) +
 ggplot(energy_annual_re, aes(x = year, y = Renewable_pct)) +
   geom_line(color = "steelblue", size = 1.2) +
   geom_point(color = "steelblue", size = 2) +
-  geom_point(data = energy_annual_re %>% filter(year == 2016), 
+  geom_point(data = energy_annual_re %>% filter(year == 2005), 
              aes(x = year, y = Renewable_pct), color = "orange", size = 3) +
-  geom_text(data = energy_annual_re %>% filter(year == 2016),
+  geom_text(data = energy_annual_re %>% filter(year == 2005),
             aes(x = year, y = Renewable_pct, 
                 label = paste0(round(Renewable_pct*100,1),"%")),
                 vjust = -1, color = "orange", size = 3.5) +
-  annotate("text", x = 2016.2, y = 0.043, label = "2016", 
+  annotate("text", x = 2005, y = 0.027, label = "2005", 
+           color = "orange", vjust = -0.5, size = 3.5) +
+  geom_point(data = energy_annual_re %>% filter(year == 2016), 
+            aes(x = year, y = Renewable_pct), color = "orange", size = 3) +
+  geom_text(data = energy_annual_re %>% filter(year == 2016),
+            aes(x = year, y = Renewable_pct, 
+                label = paste0(round(Renewable_pct*100,1),"%")),
+            vjust = -1, color = "orange", size = 3.5) +
+  annotate("text", x = 2016.2, y = 0.0417, label = "2016", 
+           color = "orange", vjust = -0.5, size = 3.5) +
+  geom_point(data = energy_annual_re %>% filter(year == 2024), 
+             aes(x = year, y = Renewable_pct), color = "orange", size = 3) +
+  geom_text(data = energy_annual_re %>% filter(year == 2024),
+            aes(x = year, y = Renewable_pct, 
+                label = paste0(round(Renewable_pct*100,1),"%")),
+            vjust = -1, color = "orange", size = 3.5) +
+  annotate("text", x = 2024.56, y = 0.112, label = "2024", 
            color = "orange", vjust = -0.5, size = 3.5) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
   labs(
@@ -133,7 +149,7 @@ ggplot(solar_seasonal_data, aes(x = month, y = mean_value)) +
               fill = "yellow", alpha = 0.3) +
   scale_x_continuous(breaks = 1:12, labels = month.abb) +
   labs(
-    title = paste("Solar Seasonal Pattern(2016-2024)"),
+    title = paste("Solar Seasonal Pattern (2016-2024)"),
     x = "Month",
     y = "Average Generation (GWh)"
   ) +
@@ -157,7 +173,7 @@ ggplot(solar_seasonal_data20, aes(x = month, y = mean_value)) +
               fill = "yellow", alpha = 0.3) +
   scale_x_continuous(breaks = 1:12, labels = month.abb) +
   labs(
-    title = paste("Solar Seasonal Patternc(2020-2024)"),
+    title = paste("Solar Seasonal Pattern (2020-2024)"),
     x = "Month",
     y = "Average Generation (GWh)"
   ) +
