@@ -44,7 +44,10 @@ Seasonal variation differs by energy source:
 - **Hydropower:** Fluctuates with rainfall and water availability.  
 - **Others (Geothermal, Biomass, Waste):** Minimal seasonal variation.
 
-<img src="figures/seasonal_pattern_solar_wind.png" width="600">
+<p align="left">
+  <img src="figures/solar_seasonal.png" width="45%">
+  <img src="figures/wind_seasonal.png" width="45%">
+</p>
 
 > The plot highlights the average monthly generation (GWh) for Solar and Wind, with shaded areas representing standard deviation across years.  
 
