@@ -1,5 +1,3 @@
-> 🧩 This section is **work in progress** – ⏳ *Last updated: October 2025*
-
 ## 📈 Time-Series Models Comparison
 
 [⬅ Back to R results](README.md) | [⬅ Back to Project Overview](../README.md)
