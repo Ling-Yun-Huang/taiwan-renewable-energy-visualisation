@@ -20,8 +20,8 @@
   <img src="figures/Forecast25_totalre.png" width="45%">
 </p>
 
-> Solar and wind dominate Taiwan’s renewable generation with clear seasonal variation, while other sources remain steady.  
-> Overall renewable output is forecasted to rise steadily through 2025.
+> Solar and wind dominate, showing clear seasonal patterns, while other sources remain stable.  
+> Total renewable generation is expected to grow steadily to 2025.
 
 ### 🔹 Annual Forecast Summary
 
@@ -56,27 +56,27 @@
 
 ### 🔹 Trend and Target Assessment
 
-<p align="center">
-  <img src="figures/forecast_2025_target.png" width="600">
+<p align="left">
+  <img src="figures/re_energy_pct.png" width="600">
 </p>
 
-Despite continued growth, projections indicate that **Taiwan may reach around 15% renewable share by 2025**,
-suggesting **additional acceleration is needed** to meet the **20% renewable energy target** within the next few years.
-
-> Policy implication: Strengthening investment in solar and offshore wind remains critical
-> to closing the gap toward the 20% benchmark.
+Despite continued growth, projections indicate:
+- Taiwan may reach ~15% renewable share by 2025.
+- Additional acceleration is needed to meet the 20% target.
 
 ---
 
 ### 🔹 Summary Insights
 
-* **Model used:** ARIMA (selected for best 2024 performance)
-* **Forecast period:** 2025 (based on 2005–2024 data)
-* **Expected renewable share:** ~15% of total electricity generation
-* **Main growth drivers:** Solar and wind capacity expansion
-* **Challenge:** Current pace insufficient to achieve 20% by 2025
+- **Model:** ARIMA (best 2024 performance)
+- **Forecast year:** 2025 (data: 2005–2024)
+- **Expected renewable share:** ~15% of total generation
+- **Main growth drivers:** Solar and wind
+- **Challenge:** Pace insufficient to reach 20% by 2025
 
 ---
+
+➡️ **Next step:** Explore the interactive dashboard built with Shiny: [🌍 Shiny Dashboard](Dashboard.md)
 
 ---
 
