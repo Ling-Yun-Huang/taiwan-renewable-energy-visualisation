@@ -90,3 +90,45 @@ forecast_2025_summary <- forecast_total %>%
   )
 
 forecast_2025_summary
+
+
+# see individual types trend
+
+color_panel <- c(
+  "Hydropower" = "#93C572",  
+  "Geothermal" = "#F4A582",  
+  "Solar"      = "#FFCC33",  
+  "Wind"       = "#6CA0DC",  
+  "Biomass"    = "#C08081",  
+  "Waste"      = "#A7A7A7"  
+)
+
+forecast_long <- forecast_total %>%
+  select(date, all_of(paste0(energy_list, "_pred"))) %>%
+  pivot_longer(
+    cols = -date,
+    names_to = "Source",
+    values_to = "Value"
+  ) %>%
+  mutate(
+    Source = gsub("_pred", "", Source),
+    Source = factor(Source, levels = c("Solar", "Wind", "Hydropower", "Biomass", "Waste", "Geothermal"))
+  )
+
+ggplot(forecast_long, aes(x = date, y = Value, color = Source)) +
+  geom_smooth(se = FALSE, method = "loess", span = 0.5, size = 1.3) + 
+  #geom_point(size = 2, alpha = 0.7) +
+  labs(
+    title = "Renewable Energy Forecast by Source (2025, ARIMA)",
+    subtitle = "Smoothed trends for each renewable energy type",
+    x = "Month",
+    y = "Forecasted Generation (GWh)",
+    color = "Energy Source"
+  ) +
+  scale_color_manual(values = color_panel) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5),
+    #legend.position = "bottom"
+  )
