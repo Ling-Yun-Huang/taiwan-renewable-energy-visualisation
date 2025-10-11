@@ -72,3 +72,21 @@ ggplot(forecast_total, aes(x = date)) +
   theme_minimal(base_size = 12) +
   theme(plot.title = element_text(face = "bold", hjust = 0.5))
 
+# Summarize monthly forecast to annual totals
+forecast_2025_summary <- forecast_total %>%
+  summarise(
+    Solar       = sum(Solar_pred),
+    Wind        = sum(Wind_pred),
+    Hydropower  = sum(Hydropower_pred),
+    Geothermal  = sum(Geothermal_pred),
+    Biomass     = sum(Biomass_pred),
+    Waste       = sum(Waste_pred),
+    Renewable   = sum(Renewable_mean),
+    Total       = sum(Overall_mean),
+    Solar_pct   = sum(Solar_pred) / sum(Overall_mean) * 100,
+    Wine_pct    = sum(Wind_pred) / sum(Overall_mean) * 100,
+    Other_pct   = (sum(Renewable_mean)-sum(Solar_pred)-sum(Wind_pred)) / sum(Overall_mean) * 100,
+    Renewable_pct = sum(Renewable_mean) / sum(Overall_mean) * 100
+  )
+
+forecast_2025_summary

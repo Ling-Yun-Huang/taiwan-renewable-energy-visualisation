@@ -58,6 +58,36 @@ for(e in energy_list){
   print(p)
 }
 
+# Summarise per-source model accuracy
+
+accuracy_summary <- accuracy_table %>%
+  group_by(Energy, Model) %>%
+  summarise(
+    RMSE = round(mean(RMSE), 2),
+    MAPE = round(mean(MAPE), 3),
+    .groups = "drop"
+  )
+
+print(accuracy_summary)
+
+accuracy_wide <- accuracy_summary %>%
+  tidyr::pivot_wider(names_from = Model, values_from = c(RMSE, MAPE))
+
+print(accuracy_wide)
+
+ggplot(accuracy_table, aes(x = Energy, y = RMSE, fill = Model)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "RMSE by Energy Source and Model", y = "RMSE", x = "Energy Source") +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold", hjust = 0.5))
+
+ggplot(accuracy_table, aes(x = Energy, y = MAPE, fill = Model)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "MAPE by Energy Source and Model", y = "MAPE", x = "Energy Source") +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold", hjust = 0.5))
+
+
 ## Added all renewable energy sources and compare to the actual number in 2024
 
 # create a dataframe to store the total number
