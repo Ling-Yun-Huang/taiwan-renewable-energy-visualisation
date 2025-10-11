@@ -13,30 +13,46 @@
 
 ---
 
+### 🔹 Monthly Forecast Trend
+
+<p align="left">
+  <img src="figures/Forecast25_source.png" width="45%">
+  <img src="figures/Forecast25_totalre.png" width="45%">
+</p>
+
+> Solar and wind dominate Taiwan’s renewable generation with clear seasonal variation, while other sources remain steady.  
+> Overall renewable output is forecasted to rise steadily through 2025.
+
 ### 🔹 Annual Forecast Summary
 
-| Year            | Renewable Generation (GWh) | Year-on-Year Growth |
-| --------------- | -------------------------: | ------------------: |
-| 2024 (actual)   |                     33,917 | —                   |
-| 2025 (forecast) |                     45,640 | **+34.6%**          |
-
-> **Insight:**
-> The upward trajectory suggests consistent expansion, aligning with recent investment trends in solar and wind capacity.
+<table>
+<tr>
+<td>
+<img src="figures/annual_trend_yearly.png" width="600">
+</td>
+<td style="vertical-align: top; padding-left: 20px;">
+<table>
+  <tr><th>Year</th><th>Renewable (GWh)</th></tr>
+  <tr><td>2024 (actual)</td><td>33,917</td></tr>
+  <tr><td>2025 (forecast)</td><td>45,640</td></tr>
+  <tr><td>Growth (2024-2025)</td><td>+34.6%</td></tr>
+</table>
+</td>
+</tr>
+</table>
 
 #### 🔹 Detail by Sources
 
 | Energy Source | 2024 Actual (GWh) | 2025 Forecast (GWh) | Growth (%) | Key Driver                         |
 | ------------- | ----------------: | ------------------: | ---------: | ---------------------------------- |
-| Solar         |            15,296 |              17,534 |     +14.7% | New PV capacity & rooftop adoption |
-| Wind          |            10,510 |              19,773 |     +88.2% | Offshore wind projects scaling up  |
-| Hydropower    |             4,208 |               4,319 |      +2.6% | Limited expansion capacity         |
-| Geothermal    |                27 |                  25 |      -7.4% | Too small      |
-| Biomass       |               238 |                 240 |      +0.8% | Stay stable       |
-| Waste         |             3,638 |               3,749 |      +3.0% | Stay stable   |
+| **Solar**     |            15,296 |              17,534 | **+14.7%** | New PV capacity & rooftop adoption |
+| **Wind**      |            10,510 |              19,773 | **+88.2%** | Offshore wind projects scaling up  |
+| Hydropower    |             4,208 |               4,319 |      +2.6% | Limited expansion potential        |
+| Geothermal    |                27 |                  25 |      −7.4% | Negligible output scale            |
+| Biomass       |               238 |                 240 |      +0.8% | Stable operation                   |
+| Waste         |             3,638 |               3,749 |      +3.0% | Stable operation                   |
 
-> **Insight:**  
-> - Solar and Wind are the main drivers of growth.  
-> - Hydropower and other sources remain relatively stable.  
+---
 
 ### 🔹 Trend and Target Assessment
 
