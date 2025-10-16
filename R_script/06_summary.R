@@ -82,7 +82,7 @@ historical_annual <- energy_long %>%
   summarise(
     Renewable = sum(value[item %in% energy_list]),
     Total = sum(Overall[item %in% "Solar"]),
-    Renewable_pct = Renewable / Total,
+    Renewable_pct = (Renewable / Total)*100,
     .groups = "drop"
   ) %>%
   filter(as.numeric(year) >= 2020) %>% 
@@ -101,9 +101,9 @@ forecast_annual <- forecast_total %>%
     Total = sum(Overall_mean),
     Renewable_lower = sum(Renewable_lower),
     Renewable_upper = sum(Renewable_upper),
-    Renewable_pct = sum(Renewable_mean) / sum(Overall_mean),
-    Renewable_lower_pct = sum(Renewable_lower) / sum(Overall_upper),
-    Renewable_upper_pct = sum(Renewable_upper) / sum(Overall_lower),
+    Renewable_pct = sum(Renewable_mean) / sum(Overall_mean)*100,
+    Renewable_lower_pct = sum(Renewable_lower) / sum(Overall_upper)*100,
+    Renewable_upper_pct = sum(Renewable_upper) / sum(Overall_lower)*100,
     .groups = "drop"
   ) %>%
   filter(as.numeric(year) >= 2020) %>% 
@@ -114,20 +114,16 @@ annual_plot <- bind_rows(historical_annual, forecast_annual)
 
 annual_plot <- annual_plot %>%
   arrange(year) %>%
-  mutate(
-    YoY_growth = (Renewable / lag(Renewable) - 1) * 100,
-    YoY_growth_lower = ifelse(!is.na(Renewable_lower) & !is.na(lag(Renewable)),
-                              (Renewable_lower / lag(Renewable) - 1) * 100, NA),
-    YoY_growth_upper = ifelse(!is.na(Renewable_upper) & !is.na(lag(Renewable)),
-                              (Renewable_upper / lag(Renewable) - 1) * 100, NA)
-  )
+  mutate(YoY_growth = (Renewable / lag(Renewable) - 1) * 100) %>%
+  mutate(year_num = as.numeric(year))
+
 annual_plot
 
 # ------------------------
 # Plot
 # ------------------------
 ggplot(annual_plot, aes(x = factor(year), y = Renewable, fill = series)) +
-  geom_col(position = "dodge", width = 0.5) +  # 調整柱寬
+  geom_col(position = "dodge", width = 0.5) + 
   geom_errorbar(aes(ymin = Renewable_lower, ymax = Renewable_upper),
                 width = 0.1,
                 data = annual_plot %>% filter(series == "Forecast")) +
@@ -136,3 +132,45 @@ ggplot(annual_plot, aes(x = factor(year), y = Renewable, fill = series)) +
        x = "Year", y = "Renewable Generation (GWh)", fill = "Series") +
   theme_minimal(base_size = 12)
 
+scale_factor <- max(annual_plot$Renewable, na.rm = TRUE) / max(annual_plot$YoY_growth, na.rm = TRUE)
+
+ggplot(annual_plot, aes(x = factor(year))) +
+  geom_col(aes(y = Renewable, fill = series), position = "dodge", width = 0.4) +
+  geom_errorbar(aes(ymin = Renewable_lower, ymax = Renewable_upper),
+                width = 0.05,
+                data = annual_plot %>% filter(series == "Forecast")) +
+  geom_line(aes(y = YoY_growth * scale_factor, group = 1), color = "#C08081", size = 1.1) +
+  geom_point(aes(y = YoY_growth * scale_factor), color = "#C08081", size = 2.5) +
+  scale_y_continuous(
+    name = "Renewable Generation (GWh)",
+    sec.axis = sec_axis(~./scale_factor, name = "YoY Growth (%)")
+  ) +
+  scale_fill_manual(values = c("Historical" = "#4F81BD", "Forecast" = "#9BBB59")) +
+  labs(
+    title = "Annual Renewable Energy Trend with YoY Growth (2020–2025)",
+    x = "Year",
+    fill = "Series"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    axis.title.y.right = element_text(color = "#A52A2A"),
+    axis.text.y.right = element_text(color = "#A52A2A"),
+    #legend.position = "bottom"
+  )
+
+
+# lines
+historical_line <- annual_plot %>% filter(year_num <= 2024)
+forecast_line <- annual_plot %>% filter(year_num >= 2024)
+
+ggplot(annual_plot, aes(x = year_num, y = Renewable_pct)) +
+  geom_line(data = historical_line, aes(group = 1), color = "#4F81BD", size = 1.2) +
+  geom_line(data = forecast_line, aes(group = 1), color = "#9BBB59", size = 1.2, linetype = "dashed") +
+  geom_point(aes(color = series), size = 3) +
+  geom_hline(yintercept = 20, linetype = "dashed", color = "#A52A2A", size = 1) +
+  annotate("text", x = 2024.5, y = 20, label = "20% target", vjust = -0.5, color = "#A52A2A") +
+  scale_color_manual(values = c("Historical" = "#4F81BD", "Forecast" = "#9BBB59")) +
+  scale_y_continuous(labels = scales::percent_format(scale = 1), limits = c(0, 22)) +
+  labs(title = "Annual Renewable Energy Share (2020–2025)",
+       x = "Year", y = "Renewable Energy (%)", color = "Series") +
+  theme_minimal(base_size = 12)
